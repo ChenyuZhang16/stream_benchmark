@@ -21,6 +21,9 @@ clean:
 stream.icc: stream.c
 	icc -O3 -xCORE-AVX2 -ffreestanding -qopenmp -DSTREAM_ARRAY_SIZE=80000000 -DNTIMES=20 stream.c -o stream.omp.AVX2.80M.20x.icc
 
+stream.gcc.zen2: stream.c
+	gcc -O3 -march=znver2 -ffreestanding -fopenmp -DSTREAM_ARRAY_SIZE=80000000 -DNTIMES=20 stream.c -o stream.omp.AVX2.80M.20x.gcc.zen2
+
 stream.icc512: stream.c
 	icc -O3 -xCORE-AVX512 -qopenmp -DSTREAM_ARRAY_SIZE=80000000 -DNTIMES=20 stream.c -o stream.omp.AVX512.80M.20x.icc
 
